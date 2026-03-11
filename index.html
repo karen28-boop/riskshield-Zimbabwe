@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>RiskShield Zimbabwe — Insurance for the Modern Era</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+
+<style>
+/* ===== DESIGN TOKENS ===== */
+:root {
+  --forest:   #004d00;
+  --green:    #006400;
+  --mid:      #1a7a1a;
+  --lime:     #4caf50;
+  --gold:     #FFD700;
+  --amber:    #FFA500;
+  --cream:    #faf8f0;
+  --paper:    #f5f2e8;
+  --charcoal: #1a1a1a;
+  --slate:    #3a3a3a;
+  --muted:    #6b6b6b;
+  --white:    #ffffff;
+  --shadow:   rgba(0,77,0,0.15);
+  --r: 0.75rem;
+}
+
+/* ===== RESET ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--cream);
+  color:var(--charcoal);
+  overflow-x:hidden;
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;}
+code,pre{font-family:'DM Mono',monospace;}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--paper);}
+::-webkit-scrollbar-thumb{background:var(--green);border-radius:3px;}
+
+/* ===== NAV ===== */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 4rem;
+  background:rgba(0,77,0,0.96);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,215,0,0.2);
+  transition:padding .3s;
+}
+.nav-logo{
+  display:flex;align-items:center;gap:.75rem;
+  text-decoration:none;
+}
+.nav-logo-shield{
+  width:38px;height:38px;
+  background:linear-gradient(135deg,var(--green),var(--gold));
+  border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;
+  font-weight:700;font-size:1.3rem;color:white;
+  box-shadow:0 2px 12px rgba(255,215,0,0.3);
+}
+.nav-logo-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.35rem;font-weight:600;color:var(--gold);
+  letter-spacing:.5px;
+}
+.nav-logo-sub{
+  font-size:.65rem;color:rgba(255,255,255,0.6);
+  letter-spacing:2px;text-transform:uppercase;
+  display:block;margin-top:-2px;
+}
+.nav-links{display:flex;align-items:center;gap:2rem;}
+.nav-links a{
+  color:rgba(255,255,255,0.8);text-decoration:none;
+  font-size:.88rem;font-weight:500;letter-spacing:.3px;
+  transition:color .2s;
+}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{
+  background:var(--gold);color:var(--forest);
+  padding:.5rem 1.4rem;border-radius:50px;
+  font-size:.85rem;font-weight:600;
+  text-decoration:none;transition:all .2s;
+  box-shadow:0 2px 12px rgba(255,215,0,0.3);
+}
+.nav-cta:hover{background:var(--amber);transform:translateY(-1px);}
+
+/* ===== HERO ===== */
+#hero{
+  min-height:100vh;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(0,100,0,0.35) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 80% at 80% 30%, rgba(255,215,0,0.08) 0%, transparent 60%),
+    linear-gradient(160deg, var(--forest) 0%, #002200 50%, #001a00 100%);
+  display:flex;align-items:center;
+  padding:6rem 4rem 4rem;
+  position:relative;overflow:hidden;
+}
+.hero-grid-bg{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,215,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,215,0,0.04) 1px, transparent 1px);
+  background-size:60px 60px;
+}
+.hero-content{
+  max-width:680px;position:relative;z-index:2;
+  animation:fadeUp .9s ease both;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(255,215,0,0.12);border:1px solid rgba(255,215,0,0.3);
+  color:var(--gold);padding:.35rem 1rem;border-radius:50px;
+  font-size:.78rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;
+  margin-bottom:2rem;
+}
+.hero-badge span{width:6px;height:6px;background:var(--gold);border-radius:50%;display:inline-block;animation:pulse 2s infinite;}
+.hero-title{
+  font-size:clamp(3rem,7vw,5.5rem);
+  font-weight:700;line-height:1.05;
+  color:white;margin-bottom:1.5rem;
+}
+.hero-title em{
+  font-style:italic;
+  background:linear-gradient(135deg,var(--gold),var(--amber));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-sub{
+  font-size:1.15rem;color:rgba(255,255,255,0.7);
+  line-height:1.7;margin-bottom:2.5rem;max-width:520px;
+  font-weight:300;
+}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{
+  background:linear-gradient(135deg,var(--gold),var(--amber));
+  color:var(--forest);padding:.85rem 2rem;border-radius:50px;
+  font-weight:600;font-size:.95rem;text-decoration:none;
+  box-shadow:0 4px 20px rgba(255,215,0,0.35);
+  transition:all .25s;display:inline-flex;align-items:center;gap:.5rem;
+  border:none;cursor:pointer;
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,215,0,0.45);}
+.btn-secondary{
+  background:transparent;color:white;
+  padding:.85rem 2rem;border-radius:50px;
+  font-weight:500;font-size:.95rem;text-decoration:none;
+  border:1.5px solid rgba(255,255,255,0.35);
+  transition:all .25s;display:inline-flex;align-items:center;gap:.5rem;
+}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold);}
+.hero-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;margin-top:4rem;
+  animation:fadeUp 1s .3s ease both;
+}
+.hero-stat{border-left:2px solid rgba(255,215,0,0.3);padding-left:1rem;}
+.hero-stat-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.2rem;font-weight:700;
+  background:linear-gradient(135deg,var(--gold),var(--amber));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-stat-label{font-size:.78rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;}
+.hero-visual{
+  position:absolute;right:6%;top:50%;transform:translateY(-50%);
+  width:420px;height:420px;
+  animation:fadeUp .9s .2s ease both;
+}
+.shield-main{
+  width:100%;height:100%;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(255,215,0,0.15) 0%, transparent 60%),
+    linear-gradient(160deg,rgba(0,100,0,0.6),rgba(0,30,0,0.8));
+  border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  border:2px solid rgba(255,215,0,0.25);
+  box-shadow:
+    0 0 80px rgba(0,100,0,0.4),
+    inset 0 0 60px rgba(255,215,0,0.05);
+  position:relative;
+  animation:floatShield 6s ease-in-out infinite;
+}
+.shield-r{
+  font-family:'Cormorant Garamond',serif;
+  font-size:8rem;font-weight:700;color:white;
+  text-shadow:0 4px 20px rgba(0,0,0,0.5);
+  line-height:1;
+}
+.shield-text{
+  font-size:.7rem;letter-spacing:4px;text-transform:uppercase;
+  color:var(--gold);opacity:.8;margin-top:.25rem;
+}
+.shield-ring{
+  position:absolute;inset:-20px;
+  border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+  border:1px solid rgba(255,215,0,0.1);
+  animation:ring 8s linear infinite;
+}
+.shield-ring2{
+  position:absolute;inset:-40px;
+  border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+  border:1px dashed rgba(255,215,0,0.05);
+  animation:ring 12s linear infinite reverse;
+}
+
+/* ===== SECTION SHELLS ===== */
+section{padding:6rem 4rem;}
+.section-label{
+  font-size:.72rem;letter-spacing:3px;text-transform:uppercase;
+  color:var(--green);font-weight:600;margin-bottom:.75rem;
+  display:flex;align-items:center;gap:.5rem;
+}
+.section-label::before{content:'';width:24px;height:2px;background:var(--green);}
+.section-title{
+  font-size:clamp(2rem,4vw,3rem);font-weight:700;
+  color:var(--forest);line-height:1.15;margin-bottom:1.25rem;
+}
+.section-title em{font-style:italic;color:var(--green);}
+.section-sub{font-size:1.05rem;color:var(--muted);line-height:1.7;max-width:560px;}
+
+/* ===== ABOUT ===== */
+#about{background:var(--white);}
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:5rem;
+  align-items:center;margin-top:3.5rem;
+}
+.about-features{display:flex;flex-direction:column;gap:1.5rem;}
+.feature-card{
+  display:flex;gap:1.25rem;align-items:flex-start;
+  padding:1.5rem;background:var(--cream);border-radius:var(--r);
+  border-left:3px solid var(--green);
+  transition:all .25s;
+}
+.feature-card:hover{transform:translateX(6px);box-shadow:0 4px 20px var(--shadow);}
+.feature-icon{
+  width:44px;height:44px;min-width:44px;
+  background:linear-gradient(135deg,var(--green),var(--mid));
+  border-radius:10px;display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;
+}
+.feature-title{font-size:1rem;font-weight:600;color:var(--forest);margin-bottom:.3rem;}
+.feature-desc{font-size:.88rem;color:var(--muted);line-height:1.6;}
+.about-visual{
+  background:linear-gradient(160deg,var(--forest),#002a00);
+  border-radius:1.5rem;padding:2.5rem;
+  box-shadow:0 20px 60px rgba(0,77,0,0.3);
+  position:relative;overflow:hidden;
+}
+.about-visual::before{
+  content:'';position:absolute;top:-40%;right:-20%;
+  width:300px;height:300px;
+  background:radial-gradient(circle,rgba(255,215,0,0.08),transparent 70%);
+}
+.economic-metric{
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,215,0,0.15);
+  border-radius:.75rem;padding:1.25rem;
+  margin-bottom:1rem;
+}
+.em-label{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:.4rem;}
+.em-value{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2rem;font-weight:700;
+  color:var(--gold);line-height:1;
+}
+.em-sub{font-size:.78rem;color:rgba(255,255,255,0.5);margin-top:.2rem;}
+.em-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+
+/* ===== CURRENCY TIMELINE ===== */
+#timeline{background:var(--paper);}
+.timeline-wrap{margin-top:3rem;position:relative;}
+.timeline-wrap::before{
+  content:'';position:absolute;left:50%;top:0;bottom:0;
+  width:2px;background:linear-gradient(to bottom,var(--green),var(--gold));
+  transform:translateX(-50%);
+}
+.tl-item{
+  display:flex;justify-content:flex-end;padding-right:calc(50% + 2rem);
+  margin-bottom:2rem;position:relative;
+}
+.tl-item:nth-child(even){
+  justify-content:flex-start;padding-right:0;
+  padding-left:calc(50% + 2rem);
+}
+.tl-dot{
+  position:absolute;left:50%;top:1rem;
+  width:14px;height:14px;border-radius:50%;
+  background:var(--gold);border:3px solid var(--forest);
+  transform:translateX(-50%);
+  box-shadow:0 0 0 4px rgba(255,215,0,0.15);
+  z-index:2;
+}
+.tl-dot.crisis{background:#ef5350;}
+.tl-dot.stable{background:#4caf50;}
+.tl-card{
+  background:var(--white);border-radius:var(--r);
+  padding:1.25rem 1.5rem;max-width:380px;width:100%;
+  box-shadow:0 4px 20px rgba(0,0,0,0.06);
+  border-top:3px solid var(--green);
+  transition:transform .2s;
+}
+.tl-card:hover{transform:translateY(-3px);}
+.tl-card.crisis{border-top-color:#ef5350;}
+.tl-card.stable{border-top-color:#4caf50;}
+.tl-period{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem;}
+.tl-currency{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--forest);}
+.tl-rate{font-size:.85rem;color:var(--muted);margin:.3rem 0;}
+.tl-event{font-size:.82rem;color:var(--slate);font-style:italic;}
+.tl-badge{
+  display:inline-block;padding:.2rem .6rem;border-radius:4px;
+  font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;
+  margin-top:.5rem;
+}
+.badge-stable{background:rgba(76,175,80,0.1);color:#2e7d32;}
+.badge-crisis{background:rgba(239,83,80,0.1);color:#c62828;}
+.badge-current{background:rgba(255,215,0,0.15);color:#8a6200;}
+
+/* ===== POLICY VIEWER ===== */
+#policy-viewer{background:var(--white);}
+.viewer-intro{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:4rem;align-items:start;margin-bottom:3rem;
+}
+.portal-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.portal-card{
+  background:var(--cream);border-radius:1rem;padding:2rem;
+  border:1.5px solid transparent;cursor:pointer;
+  transition:all .25s;position:relative;overflow:hidden;
+}
+.portal-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--green),var(--gold));
+  transform:scaleX(0);transition:transform .25s;
+}
+.portal-card:hover::before,.portal-card.active::before{transform:scaleX(1);}
+.portal-card:hover,.portal-card.active{
+  border-color:rgba(0,100,0,0.2);
+  box-shadow:0 8px 30px rgba(0,77,0,0.12);
+}
+.portal-icon{font-size:2rem;margin-bottom:1rem;}
+.portal-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--forest);margin-bottom:.5rem;}
+.portal-desc{font-size:.88rem;color:var(--muted);line-height:1.6;}
+
+/* ===== LOOKUP FORM ===== */
+.lookup-panel{
+  background:linear-gradient(160deg,var(--forest),#002a00);
+  border-radius:1.5rem;padding:3rem;
+  box-shadow:0 20px 60px rgba(0,77,0,0.25);
+}
+.lookup-panel h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.8rem;font-weight:700;color:white;margin-bottom:.5rem;
+}
+.lookup-panel p{font-size:.9rem;color:rgba(255,255,255,0.6);margin-bottom:2rem;}
+.form-group{margin-bottom:1.25rem;}
+.form-label{
+  display:block;font-size:.78rem;font-weight:600;
+  color:rgba(255,255,255,0.6);letter-spacing:1px;
+  text-transform:uppercase;margin-bottom:.5rem;
+}
+.form-input{
+  width:100%;padding:.85rem 1.1rem;
+  background:rgba(255,255,255,0.07);
+  border:1.5px solid rgba(255,255,255,0.12);
+  border-radius:.6rem;color:white;font-size:.95rem;
+  font-family:'DM Sans',sans-serif;
+  transition:border-color .2s;outline:none;
+}
+.form-input::placeholder{color:rgba(255,255,255,0.3);}
+.form-input:focus{border-color:var(--gold);}
+.form-select{
+  width:100%;padding:.85rem 1.1rem;
+  background:rgba(255,255,255,0.07);
+  border:1.5px solid rgba(255,255,255,0.12);
+  border-radius:.6rem;color:white;font-size:.95rem;
+  font-family:'DM Sans',sans-serif;outline:none;cursor:pointer;
+}
+.form-select option{background:#003300;color:white;}
+.lookup-btn{
+  width:100%;padding:.9rem;
+  background:linear-gradient(135deg,var(--gold),var(--amber));
+  border:none;border-radius:.6rem;
+  font-size:.95rem;font-weight:600;
+  color:var(--forest);cursor:pointer;
+  transition:all .2s;margin-top:.5rem;
+  font-family:'DM Sans',sans-serif;
+}
+.lookup-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,215,0,0.4);}
+.result-box{
+  display:none;margin-top:1.5rem;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,215,0,0.2);
+  border-radius:var(--r);padding:1.5rem;
+}
+.result-box.show{display:block;animation:fadeUp .4s ease;}
+.result-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,0.07);
+}
+.result-row:last-child{border-bottom:none;}
+.result-key{font-size:.8rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:.5px;}
+.result-val{font-size:.95rem;color:white;font-weight:500;}
+.result-val.gold{color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:1.2rem;}
+.result-badge{
+  display:inline-block;padding:.2rem .75rem;border-radius:4px;
+  font-size:.75rem;font-weight:600;
+}
+.badge-active{background:rgba(76,175,80,0.2);color:#81c784;}
+.badge-lapsed{background:rgba(239,83,80,0.2);color:#ef9a9a;}
+.no-result{
+  text-align:center;padding:2rem;color:rgba(255,255,255,0.4);
+  display:none;
+}
+.no-result.show{display:block;}
+
+/* ===== HOW IT WORKS ===== */
+#how{background:var(--paper);}
+.steps-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:2rem;margin-top:3.5rem;position:relative;
+}
+.steps-grid::before{
+  content:'';position:absolute;
+  top:2.5rem;left:10%;right:10%;
+  height:2px;background:linear-gradient(90deg,var(--green),var(--gold));
+  z-index:0;
+}
+.step{
+  background:var(--white);border-radius:var(--r);
+  padding:2rem 1.5rem;text-align:center;
+  box-shadow:0 4px 20px rgba(0,0,0,0.05);
+  position:relative;z-index:1;
+  transition:all .25s;
+}
+.step:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,77,0,0.12);}
+.step-num{
+  width:48px;height:48px;
+  background:linear-gradient(135deg,var(--green),var(--mid));
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:white;
+  margin:0 auto 1.25rem;
+  box-shadow:0 4px 16px rgba(0,100,0,0.3);
+}
+.step-title{font-size:1.05rem;font-weight:600;color:var(--forest);margin-bottom:.5rem;}
+.step-desc{font-size:.85rem;color:var(--muted);line-height:1.6;}
+
+/* ===== MODULES ===== */
+#modules{background:var(--white);}
+.modules-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;margin-top:3rem;
+}
+.module-card{
+  background:var(--cream);border-radius:1rem;padding:1.75rem;
+  border:1.5px solid transparent;
+  transition:all .25s;position:relative;overflow:hidden;
+}
+.module-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--green),var(--gold));
+  transform:scaleX(0);transition:transform .3s;
+  transform-origin:left;
+}
+.module-card:hover::after{transform:scaleX(1);}
+.module-card:hover{
+  border-color:rgba(0,100,0,0.15);
+  box-shadow:0 8px 30px rgba(0,77,0,0.1);
+  transform:translateY(-3px);
+}
+.module-icon{font-size:1.8rem;margin-bottom:1rem;}
+.module-name{font-size:1.05rem;font-weight:600;color:var(--forest);margin-bottom:.4rem;}
+.module-desc{font-size:.85rem;color:var(--muted);line-height:1.6;}
+.module-tag{
+  display:inline-block;margin-top:.75rem;padding:.2rem .6rem;
+  background:rgba(0,100,0,0.08);border-radius:4px;
+  font-size:.7rem;font-weight:600;color:var(--green);
+  text-transform:uppercase;letter-spacing:.5px;
+}
+
+/* ===== TEAM ===== */
+#team{background:var(--paper);}
+.team-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:1.5rem;margin-top:3rem;
+}
+.team-card{
+  background:var(--white);border-radius:1rem;
+  padding:1.75rem 1.25rem;text-align:center;
+  box-shadow:0 4px 20px rgba(0,0,0,0.05);
+  transition:all .25s;
+}
+.team-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,77,0,0.12);}
+.team-avatar{
+  width:70px;height:70px;border-radius:50%;
+  background:linear-gradient(135deg,var(--green),var(--gold));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.8rem;font-weight:700;color:white;
+  margin:0 auto 1rem;
+  box-shadow:0 4px 16px rgba(0,100,0,0.25);
+}
+.team-name{font-size:.95rem;font-weight:600;color:var(--forest);margin-bottom:.25rem;}
+.team-role{font-size:.78rem;color:var(--muted);}
+.team-institution{
+  font-size:.72rem;color:var(--green);margin-top:.4rem;
+  font-weight:500;
+}
+
+/* ===== ADMIN PORTAL ===== */
+#admin{
+  background:linear-gradient(160deg,var(--forest) 0%,#001a00 100%);
+  padding:6rem 4rem;text-align:center;
+  position:relative;overflow:hidden;
+}
+#admin::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,215,0,0.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,215,0,0.03) 1px,transparent 1px);
+  background-size:40px 40px;
+}
+.admin-content{position:relative;z-index:2;max-width:600px;margin:0 auto;}
+.admin-lock{
+  width:80px;height:80px;
+  background:rgba(255,215,0,0.1);
+  border:2px solid rgba(255,215,0,0.2);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:2rem;margin:0 auto 1.5rem;
+}
+.admin-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.5rem;font-weight:700;color:white;margin-bottom:.75rem;
+}
+.admin-sub{font-size:1rem;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:2rem;}
+.admin-restricted{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(239,83,80,0.15);border:1px solid rgba(239,83,80,0.3);
+  color:#ef9a9a;padding:.5rem 1.25rem;border-radius:50px;
+  font-size:.82rem;font-weight:500;margin-bottom:2rem;
+}
+#admin-login-form{
+  background:rgba(255,255,255,0.05);border:1px solid rgba(255,215,0,0.15);
+  border-radius:1rem;padding:2.5rem;max-width:400px;margin:0 auto;
+}
+#admin-login-form h4{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.3rem;color:white;margin-bottom:1.5rem;text-align:center;
+}
+.admin-note{
+  background:rgba(255,215,0,0.08);border:1px solid rgba(255,215,0,0.15);
+  border-radius:.5rem;padding:1rem;margin-top:1.5rem;
+  font-size:.8rem;color:rgba(255,255,255,0.5);text-align:center;
+}
+.admin-success{
+  display:none;text-align:center;padding:2rem;
+}
+.admin-success.show{display:block;animation:fadeUp .4s ease;}
+.admin-success h4{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold);margin-bottom:.5rem;}
+.admin-success p{color:rgba(255,255,255,0.6);font-size:.9rem;margin-bottom:1.5rem;}
+.admin-app-link{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:linear-gradient(135deg,var(--gold),var(--amber));
+  color:var(--forest);padding:.85rem 2rem;border-radius:50px;
+  font-weight:600;font-size:.95rem;text-decoration:none;
+  box-shadow:0 4px 20px rgba(255,215,0,0.4);
+  transition:all .25s;
+}
+.admin-app-link:hover{transform:translateY(-2px);}
+
+/* ===== FOOTER ===== */
+footer{
+  background:#001200;
+  padding:4rem 4rem 2rem;
+  border-top:1px solid rgba(255,215,0,0.1);
+}
+.footer-grid{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:3rem;margin-bottom:3rem;
+}
+.footer-brand{}
+.footer-logo{
+  display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;
+}
+.footer-logo-shield{
+  width:36px;height:36px;
+  background:linear-gradient(135deg,var(--green),var(--gold));
+  border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:white;
+}
+.footer-logo-text{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--gold);}
+.footer-tagline{font-size:.85rem;color:rgba(255,255,255,0.4);line-height:1.7;max-width:280px;}
+.footer-col h5{font-size:.8rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:1.25rem;}
+.footer-links{list-style:none;}
+.footer-links li{margin-bottom:.6rem;}
+.footer-links a{font-size:.88rem;color:rgba(255,255,255,0.55);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--gold);}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,0.06);
+  padding-top:1.5rem;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:1rem;
+}
+.footer-bottom p{font-size:.8rem;color:rgba(255,255,255,0.3);}
+.footer-nust{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.75rem;color:rgba(255,255,255,0.35);
+}
+.footer-nust span{
+  background:rgba(255,215,0,0.1);color:var(--gold);
+  padding:.15rem .5rem;border-radius:3px;font-size:.7rem;
+  font-family:'DM Mono',monospace;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(24px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes pulse{
+  0%,100%{opacity:1;transform:scale(1);}
+  50%{opacity:.6;transform:scale(1.3);}
+}
+@keyframes floatShield{
+  0%,100%{transform:translateY(-50%);}
+  50%{transform:translateY(calc(-50% - 12px));}
+}
+@keyframes ring{from{transform:translateX(-50%) rotate(0deg);}to{transform:translateX(-50%) rotate(360deg);}}
+
+.reveal{
+  opacity:0;transform:translateY(30px);
+  transition:opacity .7s ease,transform .7s ease;
+}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1100px){
+  .hero-visual{width:320px;height:320px;}
+  .team-grid{grid-template-columns:repeat(3,1fr);}
+  .steps-grid{grid-template-columns:repeat(2,1fr);}
+  .steps-grid::before{display:none;}
+}
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem;}
+  .nav-links{display:none;}
+  section,#hero,#admin,footer{padding:4rem 1.5rem;}
+  .hero-visual{display:none;}
+  .about-grid,.viewer-intro{grid-template-columns:1fr;}
+  .portal-cards{grid-template-columns:1fr;}
+  .modules-grid{grid-template-columns:1fr 1fr;}
+  .team-grid{grid-template-columns:repeat(2,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .hero-stats{grid-template-columns:1fr 1fr;}
+  .tl-item,.tl-item:nth-child(even){
+    padding:0 0 0 2rem;justify-content:flex-start;
+  }
+  .timeline-wrap::before{left:0;}
+  .tl-dot{left:0;}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav id="navbar">
+  <a class="nav-logo" href="#hero">
+    <div class="nav-logo-shield">R</div>
+    <div>
+      <span class="nav-logo-text">RiskShield</span>
+      <span class="nav-logo-sub">Zimbabwe</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#policy-viewer">View Policy</a>
+    <a href="#timeline">Currency History</a>
+    <a href="#modules">Features</a>
+    <a href="#team">Team</a>
+    <a href="#admin" class="nav-cta">Admin Portal</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      Live — ZiG Era · Single Digit Inflation
+    </div>
+    <h1 class="hero-title">
+      Insurance That<br/>
+      <em>Survives</em><br/>
+      Any Economy
+    </h1>
+    <p class="hero-sub">
+      RiskShield Zimbabwe is the only insurance management platform built
+      specifically for hyperinflationary environments — tracking 5 currency
+      regimes across 17 years so your policy value is never lost to history.
+    </p>
+    <div class="hero-actions">
+      <a href="#policy-viewer" class="btn-primary">&#128269; View My Policy</a>
+      <a href="#about" class="btn-secondary">&#8594; Learn More</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">17</div>
+        <div class="hero-stat-label">Years of Data</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">5</div>
+        <div class="hero-stat-label">Currency Regimes</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">8.5%</div>
+        <div class="hero-stat-label">Current Inflation</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="shield-main">
+      <div class="shield-ring"></div>
+      <div class="shield-ring2"></div>
+      <div class="shield-r">R</div>
+      <div class="shield-text">Zimbabwe</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="reveal">
+    <div class="section-label">About RiskShield</div>
+    <h2 class="section-title">Built for <em>Zimbabwe's</em><br/>Unique Challenges</h2>
+    <p class="section-sub">
+      When currencies collapse and inflation soars, conventional insurance software fails.
+      RiskShield was engineered from the ground up to protect policyholder value — no matter what the economy does.
+    </p>
+  </div>
+  <div class="about-grid reveal">
+    <div class="about-features">
+      <div class="feature-card">
+        <div class="feature-icon">&#128200;</div>
+        <div>
+          <div class="feature-title">Real-Time Inflation Adjustment</div>
+          <div class="feature-desc">Policy values update automatically using official RBZ data. Your coverage keeps pace with economic reality — never silently eroding.</div>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#128180;</div>
+        <div>
+          <div class="feature-title">Multi-Currency Tracking</div>
+          <div class="feature-desc">From Bond Notes to RTGS to ZWL to ZiG — every currency transition is tracked and every historical policy converted accurately.</div>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#127959;</div>
+        <div>
+          <div class="feature-title">RBZ-Compliant Capital Model</div>
+          <div class="feature-desc">Solvency ratios, risk-based capital, and regulatory reporting built into the core — not bolted on as an afterthought.</div>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#11088;</div>
+        <div>
+          <div class="feature-title">Trust Scoring System</div>
+          <div class="feature-desc">Quantifies customer confidence through claims settlement speed, inflation adjustments and communication quality — then acts on the data.</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-visual">
+      <p style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,215,0,0.5);margin-bottom:1.5rem;">Live RBZ Indicators · March 2026</p>
+      <div class="economic-metric">
+        <div class="em-label">Current Inflation Rate</div>
+        <div class="em-value">8.5%</div>
+        <div class="em-sub">&#9989; Single Digit — First time since 2009</div>
+      </div>
+      <div class="em-grid">
+        <div class="economic-metric">
+          <div class="em-label">Official ZiG/USD</div>
+          <div class="em-value" style="font-size:1.4rem;">26.90</div>
+          <div class="em-sub">Stable 715+ days</div>
+        </div>
+        <div class="economic-metric">
+          <div class="em-label">Gold Reserves</div>
+          <div class="em-value" style="font-size:1.4rem;">$380M</div>
+          <div class="em-sub">Backing ZiG currency</div>
+        </div>
+      </div>
+      <div class="economic-metric">
+        <div class="em-label">ZiG Era Days of Stability</div>
+        <div class="em-value" id="live-days">715+</div>
+        <div class="em-sub">Since April 5, 2024 launch</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== POLICY VIEWER ===== -->
+<section id="policy-viewer">
+  <div class="reveal">
+    <div class="section-label">Client Portal</div>
+    <h2 class="section-title">View Your <em>Policy</em><br/>& Current Value</h2>
+    <p class="section-sub">
+      Companies and individuals can look up their insurance policies, see real-time inflation-adjusted values, and track claim history — no login required.
+    </p>
+  </div>
+  <div class="viewer-intro reveal">
+    <div>
+      <div class="portal-cards">
+        <div class="portal-card active" onclick="switchPortal('individual')">
+          <div class="portal-icon">&#129489;</div>
+          <div class="portal-title">Individual</div>
+          <div class="portal-desc">Personal policies — motor vehicles, home contents, electronics, and farm equipment.</div>
+        </div>
+        <div class="portal-card" onclick="switchPortal('company')">
+          <div class="portal-icon">&#127963;</div>
+          <div class="portal-title">Company</div>
+          <div class="portal-desc">Business insurance — buildings, inventory, fleet vehicles, and commercial assets.</div>
+        </div>
+      </div>
+      <div style="margin-top:2rem;padding:1.5rem;background:var(--cream);border-radius:var(--r);border-left:3px solid var(--green);">
+        <p style="font-size:.88rem;color:var(--muted);line-height:1.7;">
+          <strong style="color:var(--forest);">How it works:</strong> Your policy details are stored securely in the RiskShield system. Enter your Client ID or registered phone number below to retrieve your current policy value — automatically adjusted for inflation using the latest RBZ data.
+        </p>
+      </div>
+      <div style="margin-top:1.5rem;display:flex;gap:1rem;flex-wrap:wrap;">
+        <div style="padding:1rem 1.5rem;background:var(--cream);border-radius:.6rem;flex:1;min-width:120px;">
+          <div style="font-size:.72rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:.3rem;">Policy Types</div>
+          <div style="font-size:.9rem;font-weight:600;color:var(--forest);">Motor · Building · Farm · Electronics · Livestock</div>
+        </div>
+        <div style="padding:1rem 1.5rem;background:var(--cream);border-radius:.6rem;flex:1;min-width:120px;">
+          <div style="font-size:.72rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:.3rem;">Currencies</div>
+          <div style="font-size:.9rem;font-weight:600;color:var(--forest);">ZiG · USD · Historical ZWL/RTGS</div>
+        </div>
+      </div>
+    </div>
+    <div class="lookup-panel">
+      <h3>Policy Lookup</h3>
+      <p id="portal-desc">Enter your details to view your individual policy</p>
+      <div class="form-group">
+        <label class="form-label">Client ID or Phone Number</label>
+        <input class="form-input" id="lookup-id" type="text" placeholder="e.g. CL-20240315-1234 or +263 77 ..."/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Policy Number (optional)</label>
+        <input class="form-input" id="lookup-pol" type="text" placeholder="e.g. POL-MOT-202403-5678"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Asset Type</label>
+        <select class="form-select" id="lookup-type">
+          <option value="">— Select Type —</option>
+          <option>Motor Vehicle</option>
+          <option>Building</option>
+          <option>Farm Equipment</option>
+          <option>Electronics</option>
+          <option>Livestock</option>
+          <option>Inventory</option>
+        </select>
+      </div>
+      <button class="lookup-btn" onclick="lookupPolicy()">&#128269; Look Up Policy</button>
+
+      <div class="result-box" id="result-box">
+        <p style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,215,0,0.5);margin-bottom:1rem;">Policy Details</p>
+        <div class="result-row">
+          <span class="result-key">Policy Number</span>
+          <span class="result-val" id="res-polnum">POL-MOT-202403-2841</span>
+        </div>
+        <div class="result-row">
+          <span class="result-key">Asset</span>
+          <span class="result-val" id="res-asset">Motor Vehicle</span>
+        </div>
+        <div class="result-row">
+          <span class="result-key">Client</span>
+          <span class="result-val" id="res-client">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-key">Inception Date</span>
+          <span class="result-val" id="res-date">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-key">Original Value</span>
+          <span class="result-val" id="res-orig">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-key">Current Value (Inflation Adj.)</span>
+          <span class="result-val gold" id="res-current">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-key">Monthly Premium</span>
+          <span class="result-val" id="res-prem">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-key">Policy Status</span>
+          <span class="result-val"><span class="result-badge badge-active" id="res-status">Active</span></span>
+        </div>
+        <div style="margin-top:1rem;padding:.75rem;background:rgba(255,215,0,0.06);border-radius:.4rem;">
+          <p style="font-size:.75rem;color:rgba(255,255,255,0.4);text-align:center;">
+            Values calculated using RBZ official rate: 1 USD = 26.90 ZiG · Inflation: 8.5%
+          </p>
+        </div>
+      </div>
+
+      <div class="no-result" id="no-result">
+        <p style="font-size:2rem;margin-bottom:.5rem;">&#128269;</p>
+        <p>No policy found for those details.<br/>Please check your Client ID or contact your insurance officer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section id="how">
+  <div class="reveal" style="text-align:center;margin-bottom:0;">
+    <div class="section-label" style="justify-content:center;">How It Works</div>
+    <h2 class="section-title" style="text-align:center;">Simple. Transparent. <em>Fair.</em></h2>
+    <p class="section-sub" style="margin:0 auto;">From registration to claim settlement — every step is automated and inflation-aware.</p>
+  </div>
+  <div class="steps-grid reveal">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-title">Client Registration</div>
+      <div class="step-desc">Your details are captured with full economic profiling — currency preference, income level, risk classification.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-title">Asset Valuation</div>
+      <div class="step-desc">Assets are valued in ZiG and USD simultaneously. Historical policies are converted from ZWL/RTGS using exact RBZ rates.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-title">Premium Calculation</div>
+      <div class="step-desc">Premiums are calculated with an inflation loading component that adjusts monthly. You always pay a fair, current-market rate.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-title">Fair Claim Settlement</div>
+      <div class="step-desc">Claims are settled at inflation-adjusted values. Severity classification ensures the payout reflects the real cost of the loss.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MODULES ===== -->
+<section id="modules">
+  <div class="reveal">
+    <div class="section-label">System Modules</div>
+    <h2 class="section-title">9 Integrated <em>Modules</em></h2>
+    <p class="section-sub">Every aspect of insurance operations — in one unified platform.</p>
+  </div>
+  <div class="modules-grid reveal">
+    <div class="module-card">
+      <div class="module-icon">&#128101;</div>
+      <div class="module-name">Client Management</div>
+      <div class="module-desc">Register and manage individuals and companies with full demographic, economic and risk profiling.</div>
+      <span class="module-tag">Core</span>
+    </div>
+    <div class="module-card">
+      <div class="module-icon">&#128230;</div>
+      <div class="module-name">Asset Insurance</div>
+      <div class="module-desc">Issue policies for vehicles, buildings, farm equipment, electronics and livestock with automatic inflation adjustment.</div>
+      <span class="module-tag">Core</span>
+    </div>
+    <div class="module-card">
+      <div class="module-icon">&#128176;</div>
+      <div class="module-name">Premium Payments</div>
+      <div class="module-desc">Accept payments in ZiG or USD. Real-time RBZ rate conversion. Full payment history with audit trail.</div>
+      <span class="module-tag">Finance</span>
+    </div>
+    <div class="module-card">
+      <div class="module-icon">&#128203;</div>
+      <div class="module-name">Claims & Severity</div>
+      <div class="module-desc">Five-level severity classification (Low to Catastrophic). Inflation-adjusted settlements. Complete claims dashboard.</div>
+      <span class="module-tag">Claims</span>
+    </div>
+    <div class="module-card">
+      <div class="module-icon">&#128200;</div>
+      <div class="module-name">Inflation Impact</div>
+      <div class="module-desc">Live RBZ inflation data, historical trend charts, exchange rate stability analysis and erosion calculator.</div>
+      <span class="module-tag">Analytics</span>
+    </div>
+    <div class="module-card">
+      <div class="module-icon">&#11088;</div>
+      <div class="module-name">Trust Analytics</div>
+      <div class="module-desc">Quantitative trust scoring per client. At-risk client detection. Industry trust recovery tracking since ZiG introduction.</div>
+      <span class="module-tag">Analytics</span>
+    </div>
+    <div class="module-card">
+      <div class="module-icon">&#127959;</div>
+      <div class="module-name">Capital & Solvency</div>
+      <div class="module-desc">RBZ-compliant capital model. Real-time solvency ratio. Risk-based capital by asset class. Capital injection tools.</div>
+      <span class="module-tag">Regulatory</span>
+    </div>
+    <div class="module-card">
+      <div class="module-icon">&#128201;</div>
+      <div class="module-name">Profit Testing</div>
+      <div class="module-desc">Three-scenario projections (optimistic, base, pessimistic). Premium, claims and expense modelling over 10 years.</div>
+      <span class="module-tag">Actuarial</span>
+    </div>
+    <div class="module-card">
+      <div class="module-icon">&#128181;</div>
+      <div class="module-name">Historical Converter</div>
+      <div class="module-desc">Convert any amount from any date between 2009 and 2026 across all five currency regimes to current ZiG value.</div>
+      <span class="module-tag">Currency</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CURRENCY TIMELINE ===== -->
+<section id="timeline">
+  <div class="reveal" style="text-align:center;">
+    <div class="section-label" style="justify-content:center;">Zimbabwe's Monetary History</div>
+    <h2 class="section-title" style="text-align:center;">17 Years · 5 Currencies · <em>One Platform</em></h2>
+    <p class="section-sub" style="margin:0 auto 1rem;">RiskShield tracks every currency change so no historical policy is ever lost to conversion confusion.</p>
+  </div>
+  <div class="timeline-wrap reveal">
+    <div class="tl-item">
+      <div class="tl-dot stable"></div>
+      <div class="tl-card stable">
+        <div class="tl-period">2009 – 2014</div>
+        <div class="tl-currency">Multi-Currency Era</div>
+        <div class="tl-rate">USD · ZAR · BWP · 1:1 parity</div>
+        <div class="tl-event">Dollarization ends hyperinflation. Stability returns. Insurance penetration at 60%.</div>
+        <span class="tl-badge badge-stable">Stable</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="tl-period">2014 – 2016</div>
+        <div class="tl-currency">Bond Notes (1:1 USD)</div>
+        <div class="tl-rate">1 Bond = 1 USD (official)</div>
+        <div class="tl-event">Surrogate currency introduced. Initial stability maintained. Confidence begins to waver.</div>
+        <span class="tl-badge badge-current">Transitional</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot crisis"></div>
+      <div class="tl-card crisis">
+        <div class="tl-period">2016 – 2019</div>
+        <div class="tl-currency">Bond Notes Devalued → RTGS</div>
+        <div class="tl-rate">1 USD = 2.5 → 15 local units</div>
+        <div class="tl-event">Bond notes lose value. Cash shortages. RTGS electronic currency introduced. Insurance penetration drops to 32%.</div>
+        <span class="tl-badge badge-crisis">Crisis</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot crisis"></div>
+      <div class="tl-card crisis">
+        <div class="tl-period">2019 – 2023</div>
+        <div class="tl-currency">RTGS → ZWL Hyperinflation</div>
+        <div class="tl-rate">1 USD = 80 → 8,000 ZWL</div>
+        <div class="tl-event">500%+ inflation. Currency chaos. Insurance claim payouts worthless by settlement date. Trust collapses to 15%.</div>
+        <span class="tl-badge badge-crisis">Hyperinflation</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot stable"></div>
+      <div class="tl-card stable">
+        <div class="tl-period">2024 – Present</div>
+        <div class="tl-currency">ZiG — Zimbabwe Gold</div>
+        <div class="tl-rate">1 USD = 26.90 ZiG (stable)</div>
+        <div class="tl-event">Gold-backed currency launched April 2024. Single-digit inflation achieved. 715+ days of stability. Insurance trust rebuilding.</div>
+        <span class="tl-badge badge-stable">Current Era ✓</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TEAM ===== -->
+<section id="team">
+  <div class="reveal" style="text-align:center;">
+    <div class="section-label" style="justify-content:center;">The Team</div>
+    <h2 class="section-title" style="text-align:center;">Built by <em>Actuaries</em>,<br/>for Zimbabwe</h2>
+    <p class="section-sub" style="margin:0 auto;">
+      RiskShield was developed by five actuarial science students at the National University of Science and Technology (NUST) as a demonstration of how modern technology can solve real-world economic challenges.
+    </p>
+  </div>
+  <div class="team-grid reveal">
+    <div class="team-card">
+      <div class="team-avatar">K</div>
+      <div class="team-name">Kwanai Karen</div>
+      <div class="team-role">Author · Group 27</div>
+      <div class="team-institution">N02422631G</div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">L</div>
+      <div class="team-name">Lackson Tsvangirayi</div>
+      <div class="team-role">Author · Group 27</div>
+      <div class="team-institution">N02426082A</div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">K</div>
+      <div class="team-name">Kudakwashe Muzanenhamo</div>
+      <div class="team-role">Author · Group 27</div>
+      <div class="team-institution">N02424941W</div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">G</div>
+      <div class="team-name">Godfrey Masasa</div>
+      <div class="team-role">Author · Group 27</div>
+      <div class="team-institution">N02425874C</div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">C</div>
+      <div class="team-name">Charlotte E Makuleke</div>
+      <div class="team-role">Author · Group 27</div>
+      <div class="team-institution">N02538874M</div>
+    </div>
+  </div>
+  <div class="reveal" style="text-align:center;margin-top:2.5rem;">
+    <div style="display:inline-flex;align-items:center;gap:1rem;
+                background:var(--white);border-radius:50px;padding:.75rem 2rem;
+                box-shadow:0 4px 20px rgba(0,0,0,0.06);border:1px solid rgba(0,100,0,0.1);">
+      <span style="font-size:.82rem;color:var(--muted);">BSc Honours Actuarial Science</span>
+      <span style="width:4px;height:4px;background:var(--green);border-radius:50%;display:inline-block;"></span>
+      <span style="font-size:.82rem;color:var(--muted);">NUST · Bulawayo</span>
+      <span style="width:4px;height:4px;background:var(--green);border-radius:50%;display:inline-block;"></span>
+      <span style="font-size:.82rem;color:var(--muted);">Course Code: 1202</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ADMIN PORTAL ===== -->
+<section id="admin">
+  <div class="admin-content">
+    <div class="admin-lock">&#128274;</div>
+    <h2 class="admin-title">Author Admin Portal</h2>
+    <p class="admin-sub">
+      The full RiskShield application — including client registration, policy management,
+      claims processing and financial modelling — is restricted to the five authorised authors of this project.
+    </p>
+    <div class="admin-restricted">
+      <span>&#9888;</span> Restricted Access — Authors Only
+    </div>
+
+    <div id="admin-login-form">
+      <h4>Author Sign In</h4>
+      <div class="form-group">
+        <label class="form-label">Select Author</label>
+        <select class="form-select" id="admin-user">
+          <option value="">— Select your name —</option>
+          <option value="Karen">Kwanai Karen</option>
+          <option value="Lackson">Lackson Tsvangirayi</option>
+          <option value="Kudakwashe">Kudakwashe Muzanenhamo</option>
+          <option value="Godfrey">Godfrey Masasa</option>
+          <option value="Charlotte">Charlotte E Makuleke</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Access Code</label>
+        <input class="form-input" id="admin-pass" type="password" placeholder="Enter access code"/>
+      </div>
+      <button class="lookup-btn" onclick="adminLogin()">&#128274; Access Application</button>
+      <div id="admin-error" style="display:none;margin-top:1rem;text-align:center;color:#ef9a9a;font-size:.85rem;"></div>
+      <div class="admin-note">
+        This portal provides access to the full insurance management system.<br/>
+        Client data entered here is shared across all author sessions.
+      </div>
+    </div>
+
+    <div class="admin-success" id="admin-success">
+      <p style="font-size:2rem;margin-bottom:.5rem;">&#127881;</p>
+      <h4 id="admin-welcome">Welcome back!</h4>
+      <p>You are authenticated as an authorised author. Click below to open the full RiskShield management application.</p>
+      <a href="Risk_app.py" class="admin-app-link" id="admin-app-btn">
+        &#128640; Open RiskShield Application
+      </a>
+      <p style="margin-top:1rem;font-size:.78rem;color:rgba(255,255,255,0.35);">
+        Opens the Streamlit application · All your previous data will be loaded automatically
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <div class="footer-logo-shield">R</div>
+        <span class="footer-logo-text">RiskShield Zimbabwe</span>
+      </div>
+      <p class="footer-tagline">
+        The only insurance management platform built specifically for hyperinflationary economies.
+        Tracking 5 currency regimes. Protecting policy value since 2009.
+      </p>
+    </div>
+    <div class="footer-col">
+      <h5>Platform</h5>
+      <ul class="footer-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#modules">Features</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#timeline">Currency History</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Portals</h5>
+      <ul class="footer-links">
+        <li><a href="#policy-viewer">View My Policy</a></li>
+        <li><a href="#admin">Author Login</a></li>
+        <li><a href="#team">The Team</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul class="footer-links">
+        <li><a href="#">123 Kwame Nkrumah Ave</a></li>
+        <li><a href="#">Harare, Zimbabwe</a></li>
+        <li><a href="#">+263 24 279 1234</a></li>
+        <li><a href="#">info@riskshield.co.zw</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 RiskShield Zimbabwe. Developed for academic purposes at NUST.</p>
+    <div class="footer-nust">
+      National University of Science and Technology
+      <span>NUST · 1202</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== SCRIPTS ===== -->
+<script>
+// ---- Live days counter ----
+(function(){
+  const launch = new Date('2024-04-05');
+  const today  = new Date();
+  const days   = Math.floor((today - launch) / 86400000);
+  const el     = document.getElementById('live-days');
+  if(el) el.textContent = days.toLocaleString() + ' days';
+})();
+
+// ---- Scroll reveal ----
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ---- Portal switch ----
+function switchPortal(type){
+  document.querySelectorAll('.portal-card').forEach(c => c.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  document.getElementById('portal-desc').textContent =
+    type === 'individual'
+      ? 'Enter your details to view your individual policy'
+      : 'Enter your company registration details to view business policies';
+}
+
+// ---- Sample demo data ----
+const DEMO_POLICIES = [
+  {
+    id:'CL-20240315-1234', phone:'263771234567',
+    polnum:'POL-MOT-202403-2841', asset:'Motor Vehicle',
+    client:'T. Mukoko', date:'2024-03-15',
+    orig:'ZiG 150,000', current:'ZiG 163,275', prem:'ZiG 390/month', status:'Active'
+  },
+  {
+    id:'CL-20240402-5678', phone:'263772345678',
+    polnum:'POL-BUI-202404-1122', asset:'Building',
+    client:'Mukoko Enterprises', date:'2024-04-02',
+    orig:'ZiG 500,000', current:'ZiG 544,250', prem:'ZiG 1,300/month', status:'Active'
+  },
+  {
+    id:'CL-20240510-9012', phone:'263773456789',
+    polnum:'POL-FAR-202405-3344', asset:'Farm Equipment',
+    client:'J. Chikwanha', date:'2024-05-10',
+    orig:'ZiG 80,000', current:'ZiG 87,080', prem:'ZiG 208/month', status:'Active'
+  },
+  {
+    id:'CL-20241201-3456', phone:'263774567890',
+    polnum:'POL-ELE-202412-5566', asset:'Electronics',
+    client:'Dube & Co.', date:'2024-12-01',
+    orig:'ZiG 25,000', current:'ZiG 26,063', prem:'ZiG 65/month', status:'Active'
+  }
+];
+
+function lookupPolicy(){
+  const idVal  = document.getElementById('lookup-id').value.trim().toLowerCase().replace(/\s+/g,'');
+  const polVal = document.getElementById('lookup-pol').value.trim().toUpperCase();
+  const typeVal= document.getElementById('lookup-type').value;
+
+  const result = DEMO_POLICIES.find(p =>
+    p.id.toLowerCase() === idVal ||
+    p.phone === idVal.replace(/\D/g,'') ||
+    (polVal && p.polnum === polVal) ||
+    (typeVal && p.asset === typeVal && (idVal.length > 3))
+  );
+
+  document.getElementById('result-box').classList.remove('show');
+  document.getElementById('no-result').classList.remove('show');
+
+  if(result){
+    document.getElementById('res-polnum').textContent = result.polnum;
+    document.getElementById('res-asset').textContent  = result.asset;
+    document.getElementById('res-client').textContent = result.client;
+    document.getElementById('res-date').textContent   = result.date;
+    document.getElementById('res-orig').textContent   = result.orig;
+    document.getElementById('res-current').textContent= result.current;
+    document.getElementById('res-prem').textContent   = result.prem;
+    document.getElementById('res-status').textContent = result.status;
+    document.getElementById('res-status').className   =
+      'result-badge ' + (result.status === 'Active' ? 'badge-active' : 'badge-lapsed');
+    document.getElementById('result-box').classList.add('show');
+  } else if(idVal.length > 2 || polVal.length > 2){
+    document.getElementById('no-result').classList.add('show');
+  }
+}
+
+// Allow Enter key to trigger lookup
+document.querySelectorAll('.form-input').forEach(inp => {
+  inp.addEventListener('keydown', e => { if(e.key === 'Enter') lookupPolicy(); });
+});
+
+// ---- Admin login ----
+// Access codes — simple pattern matching (for demo/academic purposes)
+const AUTHOR_CODES = {
+  'Karen':      'karen2026',
+  'Lackson':    'lackson2026',
+  'Kudakwashe': 'kuda2026',
+  'Godfrey':    'godfrey2026',
+  'Charlotte':  'charlotte2026'
+};
+
+function adminLogin(){
+  const user = document.getElementById('admin-user').value;
+  const pass = document.getElementById('admin-pass').value;
+  const err  = document.getElementById('admin-error');
+
+  if(!user){ err.textContent = 'Please select your name.'; err.style.display='block'; return; }
+  if(!pass){ err.textContent = 'Please enter your access code.'; err.style.display='block'; return; }
+
+  if(AUTHOR_CODES[user] && pass === AUTHOR_CODES[user]){
+    err.style.display = 'none';
+    document.getElementById('admin-login-form').style.display = 'none';
+    document.getElementById('admin-welcome').textContent = 'Welcome, ' + document.getElementById('admin-user').selectedOptions[0].text + '!';
+    document.getElementById('admin-success').classList.add('show');
+  } else {
+    err.textContent = 'Incorrect access code. Only the 5 authors may access this portal.';
+    err.style.display = 'block';
+    document.getElementById('admin-pass').value = '';
+  }
+}
+
+document.getElementById('admin-pass').addEventListener('keydown', e => {
+  if(e.key === 'Enter') adminLogin();
+});
+
+// ---- Nav shrink on scroll ----
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').style.padding =
+    window.scrollY > 60 ? '.65rem 4rem' : '1rem 4rem';
+});
+</script>
+</body>
+</html>
